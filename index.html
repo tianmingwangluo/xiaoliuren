@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>小六壬排盘</title>
+    <script src="./slove.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+            color: #333333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #FFFFFF;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .wood { background-color: #228B22; }  
+        .fire { background-color: #f55100; }  
+        .earth { background-color: #A0522D; }
+        .metal { background-color: #e6e672; } 
+        .water { background-color: #1E90FF; } 
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>道传小六壬排盘</h1>
+        <label for="num1">第一个数字: </label>
+        <input type="number" id="num1"><br>
+        <label for="num2">第二个数字: </label>
+        <input type="number" id="num2"><br>
+        <label for="num3">第三个数字: </label>
+        <input type="number" id="num3"><br>
+        <button onclick="processNumbers()">提交</button>
+        <table id="outputTable">
+            <tr>
+                <td></td>
+                <td>天宫</td>
+                <td>地宫</td>
+                <td>人宫</td>
+                <td>时辰</td>
+            </tr>
+            <tr>
+                <td>六宫</td>
+                <td id="cellA"></td>
+                <td id="cellB"></td>
+                <td id="cellC"></td>
+                <td id="cellTime"></td>
+            </tr>
+            <tr>
+                <td>五行</td>
+                <td id="cellElementA"></td>
+                <td id="cellElementB"></td>
+                <td id="cellElementC"></td>
+                <td id="cellElementTime"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function getCurrentChineseHour() {
+            let date = new Date();
+            let hour = date.getHours();
+            let chineseHourArray = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
+            return chineseHourArray[Math.floor(hour / 2)];
+        }
+
+        function getCurrentChineseElement() {
+            let date = new Date();
+            let hour = date.getHours();
+            let elementArray = ["水", "土", "木", "木", "土", "火", "火", "土", "金", "金", "土", "水"];
+            return elementArray[Math.floor(hour / 2)];
+        }
+
+        function nameWithValue(value) {
+            const names = ["空亡", "大安", "留连", "速喜", "赤口", "小吉"];
+            return names[value];
+        }
+
+        function elementWithName(name) {
+            const elements = {
+                "大安": "木",
+                "留连": "土",
+                "速喜": "火",
+                "赤口": "金",
+                "小吉": "水",
+                "空亡": "土"
+            };
+            return elements[name] || "";
+        }
+
+        function processNumbers() {
+            const num1 = parseInt(document.getElementById("num1").value) || 0;
+            const num2 = parseInt(document.getElementById("num2").value) || 0;
+            const num3 = parseInt(document.getElementById("num3").value) || 0;
+
+            if (num1 < 0) {
+                alert("第一个数字输入错误，请输入0以上的数字");
+                return;
+            }
+            if (num2 < 0) {
+                alert("第二个数字输入错误，请输入0以上的数字");
+                return;
+            }
+            if (num3 < 0) {
+                alert("第三个数字输入错误，请输入0以上的数字");
+                return;
+            }
+
+            const tempA = (num1 || 10) % 6;
+            const tempB = (tempA + num2 - 1) % 6;
+            const tempC = (tempB + num3 - 1) % 6;
+
+            const strA = nameWithValue(tempA);
+            const strB = nameWithValue(tempB);
+            const strC = nameWithValue(tempC);
+
+            document.getElementById("cellA").innerHTML = strA;
+            document.getElementById("cellB").innerHTML = strB;
+            document.getElementById("cellC").innerHTML = strC;
+
+            document.getElementById("cellElementA").innerHTML = elementWithName(strA);
+            document.getElementById("cellElementB").innerHTML = elementWithName(strB);
+            document.getElementById("cellElementC").innerHTML = elementWithName(strC);
+
+            const currentChineseHour = getCurrentChineseHour();
+            const currentChineseElement = getCurrentChineseElement();
+
+            document.getElementById("cellTime").innerHTML = currentChineseHour;
+            document.getElementById("cellElementTime").innerHTML = currentChineseElement;
+
+            const elementColors = {
+                "木": "wood",
+                "火": "fire",
+                "土": "earth",
+                "金": "metal",
+                "水": "water"
+            };
+
+            document.getElementById("cellElementA").className = elementColors[elementWithName(strA)];
+            document.getElementById("cellElementB").className = elementColors[elementWithName(strB)];
+            document.getElementById("cellElementC").className = elementColors[elementWithName(strC)];
+            document.getElementById("cellElementTime").className = elementColors[currentChineseElement];
+        }
+    </script>
+</body>
+
+</html>
