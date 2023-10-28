@@ -1,4 +1,4 @@
-//社会主义核心价值观js
+//社会主义核心价值观特效
 var a_idx = 0;
 		var b_idx = 0;
 		$(document).ready(function($){
