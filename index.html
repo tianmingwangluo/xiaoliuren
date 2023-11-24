@@ -11,6 +11,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>道传小六壬排盘在线</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="JS/Shzyhxjzg.js"></script>
+        
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -80,38 +83,40 @@
     </head>
 
     <body>
-        <div class="container">
-            <h1>道传小六壬排盘</h1>
-            <label for="num1">第一个数字: </label>
-            <input type="number" id="num1"><br>
-            <label for="num2">第二个数字: </label>
-            <input type="number" id="num2"><br>
-            <label for="num3">第三个数字: </label>
-            <input type="number" id="num3"><br>
-            <button onclick="processNumbers()">提交</button>
-            <table id="outputTable">
-                <tr>
-                    <td></td>
-                    <td>天宫</td>
-                    <td>地宫</td>
-                    <td>人宫</td>
-                    <td>时辰</td>
-                </tr>
-                <tr>
-                    <td>六宫</td>
-                    <td id="cellA"></td>
-                    <td id="cellB"></td>
-                    <td id="cellC"></td>
-                    <td id="cellTime"></td>
-                </tr>
-                <tr>
-                    <td>五行</td>
-                    <td id="cellElementA"></td>
-                    <td id="cellElementB"></td>
-                    <td id="cellElementC"></td>
-                    <td id="cellElementTime"></td>
-                </tr>
-            </table>
+        <div>
+            <div class="container">
+                <h1>道传小六壬排盘</h1>
+                <label for="num1">第一个数字: </label>
+                <input type="number" id="num1"><br>
+                <label for="num2">第二个数字: </label>
+                <input type="number" id="num2"><br>
+                <label for="num3">第三个数字: </label>
+                <input type="number" id="num3"><br>
+                <button onclick="processNumbers()">提交</button>
+                <table id="outputTable">
+                    <tr>
+                        <td></td>
+                        <td>天宫</td>
+                        <td>地宫</td>
+                        <td>人宫</td>
+                        <td>时辰</td>
+                    </tr>
+                    <tr>
+                        <td>六宫</td>
+                        <td id="cellA"></td>
+                        <td id="cellB"></td>
+                        <td id="cellC"></td>
+                        <td id="cellTime"></td>
+                    </tr>
+                    <tr>
+                        <td>五行</td>
+                        <td id="cellElementA"></td>
+                        <td id="cellElementB"></td>
+                        <td id="cellElementC"></td>
+                        <td id="cellElementTime"></td>
+                    </tr>
+                </table>
+            </div>
         </div>
         <script>
             function getCurrentChineseHour() {
