@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>道传小六壬排盘在线</title>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://raw.githubusercontent.com/tianmingwangluo/Fun-JavaScript-Scripts/main/Click/Shzyhxjzg.js"></script>
+    
         
         <style>
             body {
@@ -117,9 +117,9 @@
                     </tr>
                     <tr>
                         <td>六亲</td>
-                        <td id="6q"></td>
-                        <td id="6q"></td>
-                        <td id="6q"></td>
+                        <td id="6qA"></td>
+                        <td id="6qB"></td>
+                        <td id="6q">我</td>
                         <td id="#"></td>
                     </tr>
                     <tr>
@@ -208,6 +208,52 @@
                 document.getElementById("cellElementB").className = elementColors[elementWithName(strB)];
                 document.getElementById("cellElementC").className = elementColors[elementWithName(strC)];
                 document.getElementById("cellElementTime").className = elementColors[currentChineseElement];
+
+                const relationships = {
+                    "木": {
+                        "木": "兄弟",
+                        "火": "父母",
+                        "土": "官鬼",
+                        "金": "小人",
+                        "水": "妻财"
+                    },
+                    "火": {
+                        "木": "妻财",
+                        "火": "兄弟",
+                        "土": "子孙",
+                        "金": "父母",
+                        "水": "官鬼"
+                    },
+                    "土": {
+                        "木": "官鬼",
+                        "火": "子孙",
+                        "土": "兄弟",
+                        "金": "妻财",
+                        "水": "父母"
+                    },
+                    "金": {
+                        "木": "小人",
+                        "火": "官鬼",
+                        "土": "妻财",
+                        "金": "兄弟",
+                        "水": "子孙"
+                    },
+                    "水": {
+                        "木": "父母",
+                        "火": "妻财",
+                        "土": "父母",
+                        "金": "子孙",
+                        "水": "兄弟"
+                    }
+                };
+
+                const relationshipC = relationships[currentChineseElement];
+
+                document.getElementById("6qA").innerHTML = relationshipC[elementWithName(strA)];
+                document.getElementById("6qB").innerHTML = relationshipC[elementWithName(strB)];
+
+                
+
             }
         </script>
     </body>
