@@ -133,7 +133,7 @@
                 </table>
             </div>
         </div>
-        <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3H5iDZTD7eL33Iuz/quote.js?theme=#1690FF,#333333,#999999,#E51A1A,#FFFFFF,#1690FF,15&f=12"></script>
+       
         <script>
             
             function getCurrentChineseHour() {
@@ -254,7 +254,13 @@
 
                 document.getElementById("6qA").innerHTML = relationshipC[elementWithName(strA)];
                 document.getElementById("6qB").innerHTML = relationshipC[elementWithName(strB)];
+                const dataWidgetScript = document.createElement('script');
+                dataWidgetScript.id = 'LA-DATA-WIDGET';
+                dataWidgetScript.crossOrigin = 'anonymous';
+                dataWidgetScript.charset = 'UTF-8';
+                dataWidgetScript.src = 'https://v6-widget.51.la/v6/3H5iDZTD7eL33Iuz/quote.js?theme=#1690FF,#333333,#999999,#E51A1A,#FFFFFF,#1690FF,15&f=12';
 
+                document.body.appendChild(dataWidgetScript);
                 
 
             }
