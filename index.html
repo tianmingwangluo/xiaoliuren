@@ -3,21 +3,19 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>道传小六壬在线排盘</title>
+    <title>道传小六壬排盘在线</title>
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>道传小六壬在线排盘</title>
+        <title>道传小六壬排盘在线</title>
         <link rel="icon" type="image/x-icon" href="https://imgs.best/images/644ae59aaefb4b0d1542c144472031e8.png">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <meta name="keywords" content="小六壬,xiaoliuren,小六壬排盘,小六壬在线排盘">
-        
-        <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+        <!-- <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
         <script>LA.init({id:"3H5iDZTD7eL33Iuz",ck:"3H5iDZTD7eL33Iuz",autoTrack:true})</script>
-        
+         -->
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -139,17 +137,48 @@
                 </table>
             </div>
         </div>
-       <div>
+       <!-- <div>
            <script id="LA-DATA-WIDGET" crossorigin="anonymous" charset="UTF-8" src="https://v6-widget.51.la/v6/3H5iDZTD7eL33Iuz/quote.js?theme=1&f=12&display=0,0,0,0,0,0,0,1"></script>
-       </div>
+       </div> -->
         <script>
             
             function getCurrentChineseHour() {
                 let date = new Date();
                 let hour = date.getHours();
-                let chineseHourArray = ["子", "丑", "寅", "卯", "辰", "巳", "午", "未", "申", "酉", "戌", "亥"];
-                return chineseHourArray[Math.floor(hour / 2)];
+
+                const timePeriods = [
+                    "子时", "丑时", "寅时", "卯时", "辰时", "巳时",
+                    "午时", "未时", "申时", "酉时", "戌时", "亥时"
+                ];
+
+                // 根据时间区间判断时辰
+                if (hour >= 23 || hour < 1) {
+                    return timePeriods[0]; // 子时
+                } else if (hour >= 1 && hour < 3) {
+                    return timePeriods[1]; // 丑时
+                } else if (hour >= 3 && hour < 5) {
+                    return timePeriods[2]; // 寅时
+                } else if (hour >= 5 && hour < 7) {
+                    return timePeriods[3]; // 卯时
+                } else if (hour >= 7 && hour < 9) {
+                    return timePeriods[4]; // 辰时
+                } else if (hour >= 9 && hour < 11) {
+                    return timePeriods[5]; // 巳时
+                } else if (hour >= 11 && hour < 13) {
+                    return timePeriods[6]; // 午时
+                } else if (hour >= 13 && hour < 15) {
+                    return timePeriods[7]; // 未时
+                } else if (hour >= 15 && hour < 17) {
+                    return timePeriods[8]; // 申时
+                } else if (hour >= 17 && hour < 19) {
+                    return timePeriods[9]; // 酉时
+                } else if (hour >= 19 && hour < 21) {
+                    return timePeriods[10]; // 戌时
+                } else {
+                    return timePeriods[11]; // 亥时
+                }
             }
+
 
             function getCurrentChineseElement() {
                 let date = new Date();
