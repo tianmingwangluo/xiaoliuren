@@ -1,4 +1,5 @@
 正式版:https://www.xiao6ren.com
+小六壬ai占卜skill：https://github.com/tianmingwangluo/xiaoliuren-skill
 <br>
 ---
 
